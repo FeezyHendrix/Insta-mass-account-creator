@@ -1,32 +1,33 @@
 # Instamassaccountcreate
 
-Requirements:
+Requirements:<br>
   pip install selenium <br>
   pip install firebase
   
 
-Create a new firebase account 
-got to databases 
-click on rules 
+Create a new firebase account <br>
+got to databases <br>
+click on rules <br>
 change settings to :
 ----------------------------------
-
-    {
+<pre>
+ {
   "rules": {
     ".read": true,
     ".write": true
   }
 }
+</pre>
 ----------------------------------
 
+<br>
+Download chrome driver<br> 
+configure it to windows path<br> 
 
-Download chrome driver 
-configure it to windows path 
-
-open storeusernametofirebase.py
-change https://instausergenerator.firebaseio.com
+open storeusernametofirebase.py<br>
+change https://instausergenerator.firebaseio.com<br>
 to your firbase url
-
-#Run python botcore.py
+<br>
+#Run <strong>python botcore.py</strong>
 
 
