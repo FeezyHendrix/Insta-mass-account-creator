@@ -1,7 +1,7 @@
 # Instamassaccountcreate
 
 Requirements:
-  pip install selenium 
+  pip install selenium <br>
   pip install firebase
   
 
