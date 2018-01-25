@@ -1,4 +1,4 @@
-# Instamassaccountcreate
+# Insta Mass Account creator
 
 Requirements:<br>
   pip install selenium <br>
