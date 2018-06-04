@@ -1,11 +1,11 @@
 # Insta Mass Account creator
 
-Requirements:<br>
-  pip install selenium <br>
-  pip install firebase
-  
+###create a new virtual env
 
-Create a new firebase account <br>
+###Requirements:<br>
+  pip install -r requirements.txt
+
+###Create a new firebase account <br>
 got to databases <br>
 click on rules <br>
 change settings to :
@@ -24,10 +24,12 @@ change settings to :
 Download chrome driver<br> 
 configure it to windows path<br> 
 
-open storeusernametofirebase.py<br>
-change https://instausergenerator.firebaseio.com<br>
-to your firbase url
+open config.py<br>
+update config file to what suites your needs<br>
 <br>
-#Run <strong>python botcore.py</strong>
+###Run <strong>python botcore.py</strong>
+
+
+### fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
 
 

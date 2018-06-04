@@ -1,10 +1,10 @@
 #importing generated info
-import generateaccountinformation as accnt
+import modules.generateaccountinformation as accnt
 
 #library import 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from storeusernametofirebase import storeinfirebase
+from modules.storeusernametofirebase import storeinfirebase
 from time import sleep
 
 
@@ -45,7 +45,8 @@ def create_account():
         submit.click()
         print('Registering....')
 
-
+        """
+        DEPRECATED - CODE 
         #skip image 
         driver.get('https://www.instagram.com/accounts/registered/')
         skip = driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div[1]/button')
@@ -56,7 +57,8 @@ def create_account():
         driver.get('https://www.instagram.com/accounts/registered/1')
         skip_one = driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/button')
         skip_one.click()
-        print('skipping...')
+        print('skipping...')    
+        """
 
         storeinfirebase(name)
 
