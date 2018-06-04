@@ -1,4 +1,11 @@
+""" author: feezyhendrix
+
+    this is for configuration files
+    notes: make sure you configure the rules in firebase
+ """
+
+
 Config = {
-    "password" : "general_password_for_all_account",
+    "password" : "input_general_password",
     "firebase_url" : "firebase_url"
 }

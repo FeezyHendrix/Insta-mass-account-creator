@@ -1,3 +1,8 @@
+""" author: feezyhendrix
+
+    main function borcore
+ """
+
 #importing generated info
 import modules.generateaccountinformation as accnt
 
@@ -66,7 +71,7 @@ def create_account():
         sleep(1)
         driver.close()
     except Exception as e:
-        print('bot has encountered an unexpected problem')
+        print(e);
 
 
 while True:
