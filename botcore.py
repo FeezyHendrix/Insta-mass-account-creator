@@ -5,9 +5,11 @@
 
 #importing generated info
 import modules.generateaccountinformation as accnt
-
+import modules.config as config
 #library import 
 from selenium import webdriver
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument(config['proxy_server'])
 from selenium.webdriver.common.keys import Keys
 from modules.storeusernametofirebase import storeinfirebase
 from time import sleep
@@ -19,7 +21,7 @@ def create_account():
 
     try:
         #creating a chrome object instance to open browser
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(chrome_options)
 
         driver.get('https://www.instagram.com/')
 
