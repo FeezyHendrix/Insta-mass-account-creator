@@ -2,12 +2,12 @@
 
 create a new virtual env
 
-Requirements:<br>
-  pip install -r requirements.txt
-
-create a new firebase account <br>
-got to databases <br>
-click on rules <br>
+- Requirements:<br>
+  - pip install -r requirements.txt
+  - create a new firebase account <br>
+  - got to databases <br>
+  - click on rules <br>
+  
 change settings to :
 ----------------------------------
 <pre>
