@@ -30,6 +30,6 @@ update config file to what suites your needs<br>
 ### Run <strong>python botcore.py</strong>
 
 
-fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
+Fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
 
 
