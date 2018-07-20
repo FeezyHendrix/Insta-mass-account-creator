@@ -1,6 +1,6 @@
 # Insta Mass Account creator
 
-create a new virtual env
+Create a new virtual env
 
 - Requirements:<br>
   - pip install -r requirements.txt
@@ -8,7 +8,7 @@ create a new virtual env
   - got to databases <br>
   - click on rules <br>
   
-change settings to :
+Change settings to :
 ----------------------------------
 <pre>
  {
