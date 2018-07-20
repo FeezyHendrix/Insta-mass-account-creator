@@ -8,8 +8,7 @@ Create a new virtual env
   - got to databases <br>
   - click on rules <br>
   
-Change settings to :
-----------------------------------
+Change Settings to
 ```
  {
   "rules": {
@@ -18,8 +17,6 @@ Change settings to :
   }
 }
 ```
-----------------------------------
-
 <br>
 Download chrome driver<br> 
 configure it to windows path<br> 
