@@ -10,14 +10,14 @@ Create a new virtual env
   
 Change settings to :
 ----------------------------------
-<pre>
+```
  {
   "rules": {
     ".read": true,
     ".write": true
   }
 }
-</pre>
+```
 ----------------------------------
 
 <br>
