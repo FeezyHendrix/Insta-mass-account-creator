@@ -4,12 +4,8 @@
     notes: make sure you configure the rules in firebase
  """
 
-
-
-
-
 Config = {
-    "password" : "input_general_password",
-    "firebase_url" : "firebase_url",
-    "proxy_server" : "input_proxy_server"
+    "password" : "generalpassword for each account created ",
+    "firebase_url" : "database url",
+    "proxy_server" : "input proxy_server" #213.168.210.76 sample proxy server to not let instagram block your ip
 }

@@ -9,27 +9,22 @@ import modules.config as config
 #library import 
 from selenium import webdriver
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument(config['proxy_server'])
+chrome_options.add_argument('--proxy-server=%s' % config.Config['proxy_server'])
 from selenium.webdriver.common.keys import Keys
 from modules.storeusernametofirebase import storeinfirebase
 from time import sleep
 
+#creating a chrome object instance to open browser
+driver = webdriver.Chrome(chrome_options)
 
 def create_account():
-
-    
-
     try:
-        #creating a chrome object instance to open browser
-        driver = webdriver.Chrome(chrome_options)
 
         driver.get('https://www.instagram.com/')
 
         #username 
         name = accnt.username()
         
-        #id
-        count = 0
     
         #fill the email value
         email_field = driver.find_element_by_name('emailOrPhone')
@@ -50,22 +45,8 @@ def create_account():
 
         submit = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[6]/span/button')
         submit.click()
+
         print('Registering....')
-
-        """
-        DEPRECATED - CODE 
-        #skip image 
-        driver.get('https://www.instagram.com/accounts/registered/')
-        skip = driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div[1]/button')
-        skip.click()
-        print('skipping...')
-
-        #skip facebook connect
-        driver.get('https://www.instagram.com/accounts/registered/1')
-        skip_one = driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/button')
-        skip_one.click()
-        print('skipping...')    
-        """
 
         storeinfirebase(name)
 
@@ -73,13 +54,8 @@ def create_account():
         sleep(1)
         driver.close()
     except Exception as e:
-        print(e);
+       print(e);
 
 
 while True:
-    count = 0 
-    count = count + 1
-    if count is 100:
-        break
-    else:
-        create_account()
+    create_account()
