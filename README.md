@@ -3,7 +3,7 @@
 Create a new virtual env
 
 - Requirements:<br>
-  - pip install -r requirements.txt
+  - run `pip install -r requirements.txt`
   - create a new firebase account <br>
   - got to databases <br>
   - click on rules <br>
@@ -19,7 +19,7 @@ Change Settings to
 ```
 <br>
 Download chrome driver<br> 
-configure it to windows path<br> 
+configure it to path<br> 
 
 open config.py<br>
 update config file to what suites your needs<br>
