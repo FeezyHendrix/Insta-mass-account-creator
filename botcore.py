@@ -3,19 +3,21 @@
     main function borcore
  """
 
-#importing generated info
-import modules.generateaccountinformation as accnt
-import modules.config as config
-#library import 
-from selenium import webdriver
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--proxy-server=%s' % config.Config['proxy_server'])
-from selenium.webdriver.common.keys import Keys
-from modules.storeusernametofirebase import storeinfirebase
 from time import sleep
 
+import modules.config as config
+#importing generated info
+import modules.generateaccountinformation as accnt
+from modules.storeusernametofirebase import storeinfirebase 
+#library import 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys # and Krates
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--proxy-server=%s' % config.Config['proxy_server'])
+
 #creating a chrome object instance to open browser
-driver = webdriver.Chrome(chrome_options)
+driver = webdriver.Chrome(chrome_options=chrome_options)
 
 def create_account():
     try:
