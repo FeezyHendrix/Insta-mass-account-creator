@@ -26,7 +26,7 @@ open config.py in modules
 
 | Config | Usage |
 | :---         |  :---     |
-| password | General for Each account generated to be able to login |
+| password | General password for Each account generated to be able to login |
 | firebase_url | the url to the firebase database |
 | proxy_server | proxy server to tunnel browser |
 | has_proxy_file | True or False |
