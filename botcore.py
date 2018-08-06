@@ -146,7 +146,7 @@ def create_account():
 
     except Exception as e:
         print(e)
-       driver.close()
+        driver.close()
 
 
 for i in range(0, config.Config['amount_of_run']):
