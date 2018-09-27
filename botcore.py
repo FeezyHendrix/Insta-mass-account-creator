@@ -9,8 +9,6 @@ ig_firstname = 'firstname'
 ########## ACCOUNT CONFIG ##########
 
 url = "https://www.instagram.com/accounts/web_create_ajax/"
-
-#payload = "email=name123%40email.com&password=password&username=nickname&first_name=fernandez+romera&client_id=W6mHTAAEAAHsVu2N0wGEChTQpTfn&seamless_login_enabled=1&gdpr_s=%5B0%2C2%2C0%2Cnull%5D&tos_version=eu&opt_into_one_tap=false"
 headers = {
     'accept': "*/*",
     'accept-encoding': "gzip, deflate, br",
