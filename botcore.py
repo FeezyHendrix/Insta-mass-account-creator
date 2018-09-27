@@ -1,153 +1,43 @@
-""" author: feezyhendrix
-
-    main function borcore
- """
-
-from time import sleep
-from random import randint
-
-import modules.config as config
-#importing generated info
-import modules.generateaccountinformation as accnt
-from modules.storeusernametofirebase import storeinfirebase 
-#library import 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys # and Krates
+import requests
 
 
-def create_account():
-    try:
-        if config.Config['has_proxy_file'] == False :
-            chrome_options = webdriver.ChromeOptions()
-            chrome_options.add_argument('--proxy-server=%s' % config.Config['proxy_server'])
+########## ACCOUNT CONFIG ##########
+ig_email = 'your@email.com'
+ig_username = 'username'
+ig_password = 'password'
+ig_firstname = 'firstname'
+########## ACCOUNT CONFIG ##########
 
-            #creating a chrome object instance to open browser
-            driver = webdriver.Chrome(chrome_options=chrome_options)
-            driver.get('https://www.instagram.com/')
-            sleep(3)
+url = "https://www.instagram.com/accounts/web_create_ajax/"
 
-            name = accnt.username()
-            #username 
-            
+#payload = "email=name123%40email.com&password=password&username=nickname&first_name=fernandez+romera&client_id=W6mHTAAEAAHsVu2N0wGEChTQpTfn&seamless_login_enabled=1&gdpr_s=%5B0%2C2%2C0%2Cnull%5D&tos_version=eu&opt_into_one_tap=false"
+headers = {
+    'accept': "*/*",
+    'accept-encoding': "gzip, deflate, br",
+    'accept-language': "es-ES,es;q=0.9,en;q=0.8",
+    'content-length': "241",
+    'origin': "https://www.instagram.com",
+    'referer': "https://www.instagram.com/",
+    'user-agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
+    'x-csrftoken': "95RsiHDyX9J6AcVz9jtCIySbwf75QhvG",
+    'x-instagram-ajax': "c7e210fa2eb7",
+    'x-requested-with': "XMLHttpRequest",
+    'Cache-Control': "no-cache",
+    'Postman-Token': "82036c5a-91a6-46ae-b0e3-bf428031be27"
+    }
 
-            #fill the email value
-            email_field = driver.find_element_by_name('emailOrPhone')
-            email_field.send_keys(accnt.genEmail())
+payload = {
+    'email': ig_email,
+    'password': ig_password,
+    'username': ig_username,
+    'first_name': ig_firstname,
+    'client_id': 'W6mHTAAEAAHsVu2N0wGEChTQpTfn',
+    'seamless_login_enabled': '1',
+    'gdpr_s': '%5B0%2C2%2C0%2Cnull%5D',
+    'tos_version': 'eu',
+    'opt_into_one_tap': 'false'
+}
 
-            #fill the fullname value
-            fullname_field = driver.find_element_by_name('fullName')
-            fullname_field.send_keys(accnt.genName())
+response = requests.request("POST", url, data=payload, headers=headers)
 
-            #fill username value
-            username_field = driver.find_element_by_name('username')
-            username_field.send_keys(name)
-
-            #fill password value
-            password_field  = driver.find_element_by_name('password')
-            passW = accnt.generatePassword() 
-            password_field.send_keys(passW)
-
-            submit = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[6]/span/button')
-            submit.click()
-
-            print('Registering....')
-
-            storeinfirebase(name)
-
-
-            sleep(1)
-            driver.close()
-        
-        else :
-            with open(config.Config['proxy_file']['proxy_server_txt_file_path'], 'r') as file :
-                content = file.read().splitlines()
-                for proxy in content :
-                    chrome_options = webdriver.ChromeOptions()
-                    chrome_options.add_argument('--proxy-server=%s' % proxy)
-
-                    #creating a chrome object instance to open browser
-                    driver = webdriver.Chrome(chrome_options=chrome_options)
-
-                    amount_per_proxy = config.Config['proxy_file']['profile_per_proxy']
-
-                    if amount_per_proxy != 0 :
-                        
-                        print("Creating {} amount of users for this proxy".format(amount_per_proxy))
-
-                        for i in range(0, amount_per_proxy) :
-                            driver.get('https://www.instagram.com/')
-                            sleep(3)
-                            #username 
-                            name = accnt.username()
-                            
-                            #fill the email value
-                            email_field = driver.find_element_by_name('emailOrPhone')
-                            email_field.send_keys(accnt.genEmail())
-
-                            #fill the fullname value
-                            fullname_field = driver.find_element_by_name('fullName')
-                            fullname_field.send_keys(accnt.genName())
-
-                            #fill username value
-                            username_field = driver.find_element_by_name('username')
-                            username_field.send_keys(name)
-
-                            #fill password value
-                            password_field  = driver.find_element_by_name('password')
-                            passW = accnt.generatePassword() 
-                            password_field.send_keys(passW)
-
-                            submit = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[6]/span/button')
-                            submit.click()
-
-                            print('Registering....')
-
-                            storeinfirebase(name)
-
-                            sleep(1)
-                            driver.close()
-                    
-                    else :
-                        random_number = randint(1, 20)
-                        
-                        print("Creating {} amount of users for this proxy".format(random_number))
-                        for i in range(0, random_number):
-                            driver.get('https://www.instagram.com/')
-                            sleep(3)
-                            #username 
-                            name = accnt.username()
-                            
-                            #fill the email value
-                            email_field = driver.find_element_by_name('emailOrPhone')
-                            email_field.send_keys(accnt.genEmail())
-
-                            #fill the fullname value
-                            fullname_field = driver.find_element_by_name('fullName')
-                            fullname_field.send_keys(accnt.genName())
-
-                            #fill username value
-                            username_field = driver.find_element_by_name('username')
-                            username_field.send_keys(name)
-
-                            #fill password value
-                            password_field  = driver.find_element_by_name('password')
-                            passW = accnt.generatePassword() 
-                            password_field.send_keys(passW)
-
-                            submit = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[6]/span/button')
-                            submit.click()
-
-                            print('Registering....')
-
-                            storeinfirebase(name)
-
-                            sleep(1)
-                            driver.close()
-
-    except Exception as e:
-        print(e)
-        driver.close()
-
-
-for i in range(0, config.Config['amount_of_run']):
-    create_account()
+print(response.text)

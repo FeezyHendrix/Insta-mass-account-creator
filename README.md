@@ -4,40 +4,15 @@ Create a new virtual env
 
 - Requirements:<br>
   - run `pip install -r requirements.txt`
-  - create a new firebase account <br>
-  - got to databases <br>
-  - click on rules <br>
-  
-Change Settings to
-```
- {
-  "rules": {
-    ".read": true,
-    ".write": true
-  }
-}
-```
-<br>
-Download chrome driver<br> 
-configure it to path<br> 
 
 ## Configuration
-open config.py in modules
-
-| Config | Usage |
-| :---         |  :---     |
-| password | General password for Each account generated to be able to login |
-| firebase_url | the url to the firebase database |
-| proxy_server | proxy server to tunnel browser |
-| has_proxy_file | True or False |
-| proxy_server_txt_file_path | Path to the proxy file .txt format |
-| profile_per_proxy | amount of acccount to be generated for each proxy in the file |
-| amount of run | amount of time the code should run |
-
+open botcore.py and fill config
 
 ### Run <strong>python botcore.py</strong>
 
-
-Fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
-
-
+# Terms and conditions
+- You will NOT use this code for marketing purposes (spam, botting, harassment, massive bulk messaging...).
+- We do NOT give support to anyone who wants to use this code to send spam or commit other crimes.
+- We reserve the right to block any user of this repository that does not meet these conditions.
+## Legal
+This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Instagram or any of its affiliates or subsidiaries. This is an independent and unofficial code. Use at your own risk.
