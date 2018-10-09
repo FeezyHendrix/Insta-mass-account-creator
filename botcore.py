@@ -20,8 +20,7 @@ headers = {
     'x-csrftoken': "95RsiHDyX9J6AcVz9jtCIySbwf75QhvG",
     'x-instagram-ajax': "c7e210fa2eb7",
     'x-requested-with': "XMLHttpRequest",
-    'Cache-Control': "no-cache",
-    'Postman-Token': "82036c5a-91a6-46ae-b0e3-bf428031be27"
+    'Cache-Control': "no-cache"
     }
 
 payload = {
