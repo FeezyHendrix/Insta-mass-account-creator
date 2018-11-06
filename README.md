@@ -1,22 +1,9 @@
 # Insta Mass Account creator
 
-Create a new virtual env
+Create a new virtualenv
 
 - Requirements:<br>
   - run `pip install -r requirements.txt`
-  - create a new firebase account <br>
-  - got to databases <br>
-  - click on rules <br>
-  
-Change Settings to
-```
- {
-  "rules": {
-    ".read": true,
-    ".write": true
-  }
-}
-```
 <br>
 Download chrome driver<br> 
 configure it to path<br> 
