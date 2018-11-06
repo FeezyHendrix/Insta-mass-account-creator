@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "C:\\Users\\Hp\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "python.linting.enabled": false
 }
