@@ -8,6 +8,8 @@ Create a new virtualenv
 Download chrome driver<br> 
 configure it to path<br> 
 
+
+
 ## Configuration
 open config.py in modules
 
@@ -22,6 +24,7 @@ open config.py in modules
 
 
 ### Run <strong>python create.py</strong>
+### All username are stored in Assets/usernames.txt
 
 
 Fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
