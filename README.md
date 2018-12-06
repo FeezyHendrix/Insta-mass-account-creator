@@ -1,25 +1,14 @@
 # Insta Mass Account creator
 
-Create a new virtual env
+Create a new virtualenv
 
 - Requirements:<br>
   - run `pip install -r requirements.txt`
-  - create a new firebase account <br>
-  - got to databases <br>
-  - click on rules <br>
-  
-Change Settings to
-```
- {
-  "rules": {
-    ".read": true,
-    ".write": true
-  }
-}
-```
 <br>
 Download chrome driver<br> 
 configure it to path<br> 
+
+
 
 ## Configuration
 open config.py in modules
@@ -35,6 +24,7 @@ open config.py in modules
 
 
 ### Run <strong>python create.py</strong>
+### All username are stored in Assets/usernames.txt
 
 ###Donation
 Bitcoin : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK, Ether: 0x8cc46c8f2039429862e6d9d97491b3067daa1189, Bitcoin Cash : qrlu8gv332eeda9erlavdg885sx86nhm0v6dr95mtz
