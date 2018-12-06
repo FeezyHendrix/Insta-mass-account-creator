@@ -26,8 +26,16 @@ open config.py in modules
 ### Run <strong>python create.py</strong>
 ### All username are stored in Assets/usernames.txt
 
-###Donation
-Bitcoin : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK, Ether: 0x8cc46c8f2039429862e6d9d97491b3067daa1189, Bitcoin Cash : qrlu8gv332eeda9erlavdg885sx86nhm0v6dr95mtz
+### Donation
+<hr>
+Bitcoin : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK,
+<br>
+Ether: 0x8cc46c8f2039429862e6d9d97491b3067daa1189 
+<br>
+Bitcoin Cash : qrlu8gv332eeda9erlavdg885sx86nhm0v6dr95mtz
+<hr>
+<br>
+
 Fill <a href="https://goo.gl/forms/ZgL8r2DjuaM7xl9R2">Forms</a> to Request for more features
 
 
