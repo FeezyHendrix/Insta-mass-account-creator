@@ -111,4 +111,3 @@ def runbot():
     account.creation_config()
 
 
-runbot()

@@ -1,9 +1,9 @@
 import requests
-from config import Config
-from generateaccountinformation import genName, username, genEmail
+from modules.config import Config
+from modules.generateaccountinformation import genName, username, genEmail
 import json
 import re
-from storeusername import store 
+from modules.storeusername import store 
 
 
 #custom class for creating accounts

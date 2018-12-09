@@ -9,6 +9,4 @@ def accountCreator():
         runBot()
 
 
-
-
-runBot()
+accountCreator()
