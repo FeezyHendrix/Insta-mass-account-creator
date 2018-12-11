@@ -31,7 +31,7 @@ All username are stored in Assets/usernames.txt
 
 ### Donation
 <hr>
-BTC : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK,
+BTC : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK
 <br>
 Ether: 0x8cc46c8f2039429862e6d9d97491b3067daa1189 
 <br>
