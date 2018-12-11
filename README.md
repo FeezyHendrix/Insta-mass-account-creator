@@ -1,4 +1,6 @@
 # Insta Mass Account creator
+![Version](https://img.shields.io/badge/version-1.1.0-brightgreen.svg?style=flat-square)
+![Version](https://img.shields.io/badge/release-beta-green.svg?style=flat-square)
 
 Create a new virtualenv
 
@@ -28,7 +30,7 @@ open config.py in modules
 
 ### Donation
 <hr>
-Bitcoin : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK,
+BTC : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK,
 <br>
 Ether: 0x8cc46c8f2039429862e6d9d97491b3067daa1189 
 <br>
