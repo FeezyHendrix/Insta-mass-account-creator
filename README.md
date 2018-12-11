@@ -25,7 +25,7 @@ open config.py in modules
 | amount_per_proxy| for custom proxy, amount of account to create for each proxy |
 
 
-run `<strong>python create.py</strong>`
+run <strong>`python create.py`</strong>
 <br>
 All username are stored in Assets/usernames.txt
 
