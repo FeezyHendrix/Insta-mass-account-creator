@@ -17,9 +17,10 @@ import requests
 import re
 
 class AccountCreator():
-    def __init__(self, use_custom_proxy):
+    def __init__(self, use_custom_proxy, use_local_ip_address):
         self.sockets = []
         self.use_custom_proxy = use_custom_proxy
+        self.use_local_ip_address = use_local_ip_address
         self.url = 'https://www.instagram.com/'
         self.__collect_sockets()
 
@@ -30,9 +31,10 @@ class AccountCreator():
         for socket_str in revised_list:
             self.sockets.append(socket_str[:-5].replace("</td>", ":"))
 
-    def createaccount(self, proxy):
+    def createaccount(self, proxy=None):
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--proxy-server=%s' % proxy)
+        if proxy != None:
+            chrome_options.add_argument('--proxy-server=%s' % proxy)
 
         driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.get(self.url)
@@ -69,45 +71,55 @@ class AccountCreator():
 
     def creation_config(self):
         try:
-            if self.use_custom_proxy == False:
+            if self.use_local_ip_address == False:
+                if self.use_custom_proxy == False:
+                    for i in range(0, config.Config['amount_of_account']):
+                        if len(self.sockets) > 0:
+                            current_socket = self.sockets.pop(0)
+                            try:
+                                self.createaccount(current_socket)
+                            except Exception as e: 
+                                print('Error!, Trying another Proxy {}'.format(current_socket))
+                                self.createaccount(current_socket)  
+
+                else:
+                    with open(config.Config['proxy_file_path'], 'r') as file:
+                        content = file.read().splitlines()
+                        for proxy in content:
+                            amount_per_proxy = config.Config['amount_per_proxy']
+
+                            if amount_per_proxy != 0:
+                                print("Creating {} amount of users for this proxy".format(amount_per_proxy))
+                                for i in range(0, amount_per_proxy):
+                                    try:
+                                        self.createaccount(proxy)
+
+                                    except Exception as e:
+                                        print("An error has occured" + e)
+
+                            else:
+                                random_number = randint(1, 20)
+                                print("Creating {} amount of users for this proxy".format(random_number))
+                                for i in range(0, random_number):
+                                    try:
+                                        self.createaccount(proxy)
+                                    except Exception as e:
+                                        print(e)
+            else: 
                 for i in range(0, config.Config['amount_of_account']):
-                    if len(self.sockets) > 0:
-                        current_socket = self.sockets.pop(0)
-                        try:
-                            self.createaccount(current_socket)
-                        except Exception as e: 
-                            print('Error!, Trying another Proxy {}'.format(current_socket))
-                            self.createaccount(current_socket)  
+                            try:
+                                self.createaccount()
+                            except Exception as e: 
+                                print('Error!, Check its possible your ip might be banned')
+                                self.createaccount()  
 
-            else:
-                with open(config.Config['proxy_file_path'], 'r') as file:
-                    content = file.read().splitlines()
-                    for proxy in content:
-                        amount_per_proxy = config.Config['amount_per_proxy']
 
-                        if amount_per_proxy != 0:
-                            print("Creating {} amount of users for this proxy".format(amount_per_proxy))
-                            for i in range(0, amount_per_proxy):
-                                try:
-                                    self.createaccount(proxy)
-
-                                except Exception as e:
-                                    print("An error has occured" + e)
-
-                        else:
-                            random_number = randint(1, 20)
-                            print("Creating {} amount of users for this proxy".format(random_number))
-                            for i in range(0, random_number):
-                                try:
-                                    self.createaccount(proxy)
-                                except Exception as e:
-                                    print(e)
         except Exception as e:
             print(e)
 
 
 def runbot():
-    account = AccountCreator(config.Config['use_custom_proxy'])
+    account = AccountCreator(config.Config['use_custom_proxy'], config.Config['use_local_ip_address'])
     account.creation_config()
 
 

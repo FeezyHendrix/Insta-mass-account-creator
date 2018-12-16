@@ -29,6 +29,10 @@ run <strong>`python create.py`</strong>
 <br>
 All username are stored in Assets/usernames.txt
 
+### Important
+-  The new fake Instagram account with an unverified phone number after ~ 1-24 hours could not do any requests. All requests will be redirected to the page           
+<a href="https://instagram.com/challenge">https://instagram.com/challenge</a>
+
 ### Donation
 <hr>
 BTC : 1QKMfc8mzJxR9uDP7CsTdurj7zg6gnWxKK
