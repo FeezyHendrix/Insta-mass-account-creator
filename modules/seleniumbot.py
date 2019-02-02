@@ -44,7 +44,7 @@ class AccountCreator():
 
         # fill the email value
         email_field = driver.find_element_by_name('emailOrPhone')
-        email_field.send_keys(accnt.genEmail())
+        email_field.send_keys(accnt.genEmail(name))
 
         # fill the fullname value
         fullname_field = driver.find_element_by_name('fullName')
@@ -61,7 +61,21 @@ class AccountCreator():
 
         submit = driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')
+
+        sleep(2)
         submit.click()
+
+        sleep(3)
+
+        age_button = driver.find_element_by_xpath( "//input[@name='ageRadio' and @value='above_18']")
+        age_button.click()
+
+        sleep(2)
+        next_button = driver.find_elements_by_xpath('//button[text()="Next"]')[1]
+        print(next_button)
+        next_button.click()
+
+        sleep(10000)
 
         print('Registering....')
         store(name)
@@ -78,9 +92,9 @@ class AccountCreator():
                             current_socket = self.sockets.pop(0)
                             try:
                                 self.createaccount(current_socket)
-                            except Exception as e: 
+                            except Exception as e:
                                 print('Error!, Trying another Proxy {}'.format(current_socket))
-                                self.createaccount(current_socket)  
+                                self.createaccount(current_socket)
 
                 else:
                     with open(config.Config['proxy_file_path'], 'r') as file:
@@ -105,13 +119,13 @@ class AccountCreator():
                                         self.createaccount(proxy)
                                     except Exception as e:
                                         print(e)
-            else: 
+            else:
                 for i in range(0, config.Config['amount_of_account']):
                             try:
                                 self.createaccount()
-                            except Exception as e: 
+                            except Exception as e:
                                 print('Error!, Check its possible your ip might be banned')
-                                self.createaccount()  
+                                self.createaccount()
 
 
         except Exception as e:
@@ -121,5 +135,3 @@ class AccountCreator():
 def runbot():
     account = AccountCreator(config.Config['use_custom_proxy'], config.Config['use_local_ip_address'])
     account.creation_config()
-
-
