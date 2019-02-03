@@ -39,25 +39,31 @@ class AccountCreator():
         driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.get(self.url)
         sleep(5)
-        name = accnt.username()
         # username
+        account_info = accnt.new_account()
 
         # fill the email value
         email_field = driver.find_element_by_name('emailOrPhone')
-        email_field.send_keys(accnt.genEmail(name))
+        email_field.send_keys(account_info["email"])
 
         # fill the fullname value
         fullname_field = driver.find_element_by_name('fullName')
-        fullname_field.send_keys(accnt.genName())
+        fullname_field.send_keys(account_info["name"])
 
         # fill username value
         username_field = driver.find_element_by_name('username')
-        username_field.send_keys(name)
+        username_field.send_keys(account_info["username"])
 
         # fill password value
         password_field = driver.find_element_by_name('password')
-        passW = accnt.generatePassword()
+        passW = account_info["password"]
         password_field.send_keys(passW)
+
+        # After the first fill save the account account_info
+        store(account_info)
+
+        sleep(10000)
+        sys.exit(0)
 
         submit = driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')
@@ -76,9 +82,6 @@ class AccountCreator():
         next_button.click()
 
         sleep(10000)
-
-        print('Registering....')
-        store(name)
 
         sleep(4)
         driver.close()

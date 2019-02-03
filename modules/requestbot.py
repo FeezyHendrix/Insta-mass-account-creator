@@ -1,9 +1,9 @@
 import requests
 from modules.config import Config
-from modules.generateaccountinformation import genName, username, genEmail
+from modules.generateaccountinformation import new_account
 import json
 import re
-from modules.storeusername import store 
+from modules.storeusername import store
 
 
 #custom class for creating accounts
@@ -67,16 +67,16 @@ class CreateAccount:
                             quit()
                         elif(response["errors"]["ip"]):
                             print(response["errors"]["ip"]["message"])
-                        else: 
+                        else:
                             pass
                         self.createaccount()
                     else:
-                        pass  
+                        pass
                 except:
                     pass
             except:
                 print('Error!, Trying another Proxy {}'.format(current_socket))
-                self.createaccount()            
+                self.createaccount()
 
 
 
@@ -85,6 +85,11 @@ class CreateAccount:
 
 def runBot():
     for i in range(Config['amount_of_account']):
-        account = CreateAccount(genEmail(), username(), str(Config['password']), genName(), Config['amount_of_account'])
+        account_info = new_account(country=Config['country'])
+        account = CreateAccount(
+            account_info['email'],
+            account_info['username'],
+            account_info['password'],
+            account_info['name'],
+            Config['amount_of_account'])
         account.createaccount()
-
