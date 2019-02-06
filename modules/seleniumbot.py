@@ -10,11 +10,14 @@ import modules.config as config
 # importing generated info
 import modules.generateaccountinformation as accnt
 from modules.storeusername import store
+from activate_account import get_activation_url
 # library import
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  # and Krates
 import requests
 import re
+
+from pymailutils import Imap
 
 class AccountCreator():
     def __init__(self, use_custom_proxy, use_local_ip_address):
@@ -59,12 +62,6 @@ class AccountCreator():
         passW = account_info["password"]
         password_field.send_keys(passW)
 
-        # After the first fill save the account account_info
-        store(account_info)
-
-        sleep(10000)
-        sys.exit(0)
-
         submit = driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')
 
@@ -81,9 +78,17 @@ class AccountCreator():
         print(next_button)
         next_button.click()
 
-        sleep(10000)
-
         sleep(4)
+        # After the first fill save the account account_info
+        store(account_info)
+
+        # Activate the account
+        confirm_url = get_activation_url(account_info['email'])
+        logging.info("The confirm url is {}".format(confirm_url))
+        driver.get(confirm_url)
+
+        sleep(100000)
+
         driver.close()
 
     def creation_config(self):
