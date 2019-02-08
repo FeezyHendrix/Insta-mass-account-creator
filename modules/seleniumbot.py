@@ -16,6 +16,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  # and Krates
 import requests
 import re
+import logging
 
 from pymailutils import Imap
 
@@ -49,18 +50,27 @@ class AccountCreator():
         email_field = driver.find_element_by_name('emailOrPhone')
         email_field.send_keys(account_info["email"])
 
+        sleep(2)
+
         # fill the fullname value
         fullname_field = driver.find_element_by_name('fullName')
         fullname_field.send_keys(account_info["name"])
+
+        sleep(2)
 
         # fill username value
         username_field = driver.find_element_by_name('username')
         username_field.send_keys(account_info["username"])
 
+        sleep(2)
+
         # fill password value
         password_field = driver.find_element_by_name('password')
         passW = account_info["password"]
         password_field.send_keys(passW)
+
+        sleep(2)
+
 
         submit = driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')

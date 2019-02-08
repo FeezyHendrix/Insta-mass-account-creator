@@ -4,3 +4,4 @@ env/*
 *.pyc
 appunti.txt
 myconfig.py
+debug.log
