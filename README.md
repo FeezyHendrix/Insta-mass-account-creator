@@ -44,7 +44,7 @@ this script create account with random name get by the web and doesn't use rando
 ### contribution
 - Fork this repo.
 - Add new features.
-- Create a new pull request of this branch.
+- Create a new pull request for this branch.
 
 
 ### Credits
