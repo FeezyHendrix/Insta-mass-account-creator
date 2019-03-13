@@ -1,3 +1,7 @@
 modules/confirm_with_email.py
+Assets/usernames*
 env/*
-.vscode/*
+*.pyc
+appunti.txt
+myconfig.py
+debug.log

@@ -1,8 +1,7 @@
-"""
-    author: feezyhendrix
+""" author: feezyhendrix
 
-    Configuration files
-    NOTE: check Assets/proxies.txt to use your custom proxies.
+    this is for configuration files
+    notes: check Assets/proxies.txt to use your custom proxies.
  """
 import os
 

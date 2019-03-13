@@ -3,7 +3,7 @@
 """
 import requests
 from modules.config import Config
-from modules.generateaccountinformation import genName, username, genEmail
+from modules.generateaccountinformation import new_account
 import json
 import re
 from modules.storeusername import store
@@ -68,26 +68,22 @@ class CreateAccount:
                 current_socket = self.sockets.pop(0)
                 proxies = {"http": "http://" + current_socket, "https": "https://" + current_socket}
                 try:
-                    request = requests.post(self.url, data=payload, proxies=proxies, headers=self.headers)
-                    response = json.loads(request.text)
-                    print(response)
-                    try:
-                        if(response["account_created"] is False):
-                            if(response["errors"]["password"]):
-                                print(response["errors"]["password"]["message"])
-                                quit()
-                            elif(response["errors"]["ip"]):
-                                print(response["errors"]["ip"]["message"])
-                            else:
-                                pass
-                            self.createaccount()
+                    if(response["account_created"] is False):
+                        if(response["errors"]["password"]):
+                            print(response["errors"]["password"]["message"])
+                            quit()
+                        elif(response["errors"]["ip"]):
+                            print(response["errors"]["ip"]["message"])
                         else:
                             pass
-                    except:
+                        self.createaccount()
+                    else:
                         pass
                 except:
-                    print('Error!, Trying another Proxy {}'.format(current_socket))
-                    # self.createaccount()
+                    pass
+            except:
+                print('Error!, Trying another Proxy {}'.format(current_socket))
+                self.createaccount()
 
 
 
@@ -96,5 +92,11 @@ class CreateAccount:
 
 def runBot():
     for i in range(Config['amount_of_account']):
-        account = CreateAccount(genEmail(), username(), str(Config['password']), genName(), Config['amount_of_account'], Config['use_custom_proxy'], Config['use_local_ip_address'])
+        account_info = new_account(country=Config['country'])
+        account = CreateAccount(
+            account_info['email'],
+            account_info['username'],
+            account_info['password'],
+            account_info['name'],
+            Config['amount_of_account'])
         account.createaccount()
