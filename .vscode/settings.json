@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Hp\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "python.pythonPath": "env\\Scripts\\python.exe",
     "git.ignoreLimitWarning": true,
     "python.linting.enabled": false
 }

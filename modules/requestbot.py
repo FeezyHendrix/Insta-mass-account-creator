@@ -1,20 +1,25 @@
+"""
+
+"""
 import requests
 from modules.config import Config
 from modules.generateaccountinformation import genName, username, genEmail
 import json
 import re
-from modules.storeusername import store 
+from modules.storeusername import store
 
 
 #custom class for creating accounts
 class CreateAccount:
-    def __init__(self, email, username, password, name, numberofaccounts):
+    def __init__(self, email, username, password, name, numberofaccounts, use_custom_proxy, use_local_ip_address):
         self.sockets = []
         self.email = email
         self.username = username
         self.password = password
         self.name = name
         self.numberofaccounts = numberofaccounts
+        self.use_custom_proxy = use_custom_proxy
+        self.use_local_ip_address = use_local_ip_address
         self.url = "https://www.instagram.com/accounts/web_create_ajax/"
         self.headers = {
             'accept': "*/*",
@@ -32,7 +37,7 @@ class CreateAccount:
         }
         self.__collect_sockets()
 
-    #a private function to fetch custom proxies
+    # A function to fetch custom proxies
     def __collect_sockets(self):
         r = requests.get("https://www.sslproxies.org/")
         matches = re.findall(r"<td>\d+.\d+.\d+.\d+</td><td>\d+</td>", r.text)
@@ -40,8 +45,9 @@ class CreateAccount:
         for socket_str in revised_list:
             self.sockets.append(socket_str[:-5].replace("</td>", ":"))
 
-    #account creation function
+    # Account creation function
     def createaccount(self):
+        # Account creation payload
         payload = {
             'email': self.email,
             'password': self.password,
@@ -53,30 +59,35 @@ class CreateAccount:
             'tos_version': 'eu',
             'opt_into_one_tap': 'false'
         }
-        if len(self.sockets) > 0:
-            current_socket = self.sockets.pop(0)
-            proxies = {"http": "http://" + current_socket, "https": "https://" + current_socket}
-            try:
-                request = requests.post(self.url, data=payload, proxies=proxies, headers=self.headers)
-                response = json.loads(request.text)
-                print(response)
+        if self.use_local_ip_address is True:
+            request = requests.post(self.url, data=payload, headers=self.headers)
+            response = json.loads(request.text)
+            print(response)
+        else :
+            if len(self.sockets) > 0:
+                current_socket = self.sockets.pop(0)
+                proxies = {"http": "http://" + current_socket, "https": "https://" + current_socket}
                 try:
-                    if(response["account_created"] is False):
-                        if(response["errors"]["password"]):
-                            print(response["errors"]["password"]["message"])
-                            quit()
-                        elif(response["errors"]["ip"]):
-                            print(response["errors"]["ip"]["message"])
-                        else: 
+                    request = requests.post(self.url, data=payload, proxies=proxies, headers=self.headers)
+                    response = json.loads(request.text)
+                    print(response)
+                    try:
+                        if(response["account_created"] is False):
+                            if(response["errors"]["password"]):
+                                print(response["errors"]["password"]["message"])
+                                quit()
+                            elif(response["errors"]["ip"]):
+                                print(response["errors"]["ip"]["message"])
+                            else:
+                                pass
+                            self.createaccount()
+                        else:
                             pass
-                        self.createaccount()
-                    else:
-                        pass  
+                    except:
+                        pass
                 except:
-                    pass
-            except:
-                print('Error!, Trying another Proxy {}'.format(current_socket))
-                self.createaccount()            
+                    print('Error!, Trying another Proxy {}'.format(current_socket))
+                    # self.createaccount()
 
 
 
@@ -85,6 +96,5 @@ class CreateAccount:
 
 def runBot():
     for i in range(Config['amount_of_account']):
-        account = CreateAccount(genEmail(), username(), str(Config['password']), genName(), Config['amount_of_account'])
+        account = CreateAccount(genEmail(), username(), str(Config['password']), genName(), Config['amount_of_account'], Config['use_custom_proxy'], Config['use_local_ip_address'])
         account.createaccount()
-

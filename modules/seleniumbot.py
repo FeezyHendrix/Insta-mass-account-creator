@@ -17,6 +17,7 @@ import requests
 import re
 
 class AccountCreator():
+    account_created = 0
     def __init__(self, use_custom_proxy, use_local_ip_address):
         self.sockets = []
         self.use_custom_proxy = use_custom_proxy
@@ -35,29 +36,44 @@ class AccountCreator():
         chrome_options = webdriver.ChromeOptions()
         if proxy != None:
             chrome_options.add_argument('--proxy-server=%s' % proxy)
-
+        
+        chrome_options.add_argument('headless')
+        chrome_options.add_argument('window-size=1200x600')
         driver = webdriver.Chrome(chrome_options=chrome_options)
+        print('Opening Browser')
         driver.get(self.url)
+        print('Browser Opened')
         sleep(5)
-        name = accnt.username()
-        # username
 
+        
+        print('Generating username')
+        name = accnt.username()
+        print('username Generated')
+        # username
         # fill the email value
+        print('Filling email field')
         email_field = driver.find_element_by_name('emailOrPhone')
         email_field.send_keys(accnt.genEmail())
+        sleep(1)
 
         # fill the fullname value
+        print('Filling fullname field')
         fullname_field = driver.find_element_by_name('fullName')
         fullname_field.send_keys(accnt.genName())
+        sleep(1)
 
         # fill username value
+        print('Filling username field')
         username_field = driver.find_element_by_name('username')
         username_field.send_keys(name)
+        sleep(1)
 
         # fill password value
+        print('Filling password field')
         password_field = driver.find_element_by_name('password')
         passW = accnt.generatePassword()
         password_field.send_keys(passW)
+        sleep(1)
 
         submit = driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')
@@ -66,7 +82,7 @@ class AccountCreator():
         print('Registering....')
         store(name)
 
-        sleep(4)
+        sleep(5)
         driver.close()
 
     def creation_config(self):
