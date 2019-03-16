@@ -47,7 +47,7 @@ class AccountCreator():
         driver = webdriver.Chrome(chrome_options=chrome_options)
         print('Opening Browser')
         driver.get(self.url)
-<<<<<<< HEAD
+
         print('Browser Opened')
         sleep(5)
 
@@ -56,25 +56,23 @@ class AccountCreator():
         name = accnt.username()
         print('username Generated')
         # username
-=======
+
         action_chains = ActionChains(driver)
         sleep(5)
         # username
         account_info = accnt.new_account()
 
->>>>>>> origin
         # fill the email value
         print('Filling email field')
         email_field = driver.find_element_by_name('emailOrPhone')
-<<<<<<< HEAD
+
         email_field.send_keys(accnt.genEmail())
         sleep(1)
-=======
+
         action_chains.move_to_element(email_field)
         email_field.send_keys(account_info["email"])
 
         sleep(2)
->>>>>>> origin
 
         # fill the fullname value
         print('Filling fullname field')
