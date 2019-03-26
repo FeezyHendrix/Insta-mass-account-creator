@@ -30,7 +30,7 @@ open config.py in modules
 | country | the country of account
 | identity | the complete name of created accounts
 
-run <strong>`python create.py`</strong>
+run <strong>`python creator.py`</strong>
 <br>
 All username are stored in Assets/usernames.txt
 
