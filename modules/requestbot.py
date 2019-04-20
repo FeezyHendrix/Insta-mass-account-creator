@@ -35,6 +35,7 @@ class CreateAccount:
             'x-requested-with': "XMLHttpRequest",
             'Cache-Control': "no-cache",
         }
+        self.__collectcrsf()
         self.__collect_sockets()
 
     # A function to fetch custom proxies
@@ -44,6 +45,10 @@ class CreateAccount:
         revised_list = [m1.replace("<td>", "") for m1 in matches]
         for socket_str in revised_list:
             self.sockets.append(socket_str[:-5].replace("</td>", ":"))
+
+    def __collectcrsf(self):
+        r = requests.get('https://instagram.com/accounts/emailsignup/')
+        print(r)
 
     # Account creation function
     def createaccount(self):
@@ -81,7 +86,7 @@ class CreateAccount:
                         pass
                 except:
                     pass
-            else:
+            except:
                 print('Error!, Trying another Proxy {}'.format(current_socket))
                 self.createaccount()
 

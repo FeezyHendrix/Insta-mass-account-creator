@@ -10,7 +10,7 @@ import modules.config as config
 # importing generated info
 import modules.generateaccountinformation as accnt
 from modules.storeusername import store
-from activate_account import get_activation_url
+from .activate_account import get_activation_url
 # library import
 from selenium import webdriver
 from selenium.webdriver import ActionChains

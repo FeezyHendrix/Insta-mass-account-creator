@@ -10,7 +10,7 @@ import string
 import logging
 
 from .config import Config
-from getIdentity import getRandomIdentity
+from .getIdentity import getRandomIdentity
 
 
 #generating a username
