@@ -18,6 +18,7 @@ from selenium.webdriver.common.keys import Keys  # and Krates
 import requests
 import re
 import logging
+from fake_useragent import UserAgent
 
 from pymailutils import Imap
 
@@ -29,6 +30,7 @@ class AccountCreator():
         self.use_local_ip_address = use_local_ip_address
         self.url = 'https://www.instagram.com/'
         self.__collect_sockets()
+
 
     def __collect_sockets(self):
         r = requests.get("https://www.sslproxies.org/")
@@ -42,7 +44,11 @@ class AccountCreator():
         if proxy != None:
             chrome_options.add_argument('--proxy-server=%s' % proxy)
 
-        chrome_options.add_argument('headless')
+        # chrome_options.add_argument('headless')
+        # ua = UserAgent()
+        # user_agent = ua.random
+        chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 640 XL LTE) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10166"')
+        # chrome_options.add_argument("--incognito")
         chrome_options.add_argument('window-size=1200x600')
         driver = webdriver.Chrome(chrome_options=chrome_options)
         print('Opening Browser')
@@ -52,25 +58,20 @@ class AccountCreator():
         sleep(5)
 
 
-        print('Generating username')
-        name = accnt.username()
-        print('username Generated')
-        # username
+
 
         action_chains = ActionChains(driver)
         sleep(5)
-        # username
         account_info = accnt.new_account()
 
         # fill the email value
         print('Filling email field')
         email_field = driver.find_element_by_name('emailOrPhone')
-
-        email_field.send_keys(accnt.genEmail())
+        print(email_field)
         sleep(1)
-
         action_chains.move_to_element(email_field)
-        email_field.send_keys(account_info["email"])
+        print(account_info["email"])
+        email_field.send_keys(str(account_info["email"]))
 
         sleep(2)
 
@@ -95,7 +96,8 @@ class AccountCreator():
         password_field = driver.find_element_by_name('password')
         action_chains.move_to_element(password_field)
         passW = account_info["password"]
-        password_field.send_keys(passW)
+        print(passW)
+        password_field.send_keys(str(passW))
         sleep(1)
 
         sleep(2)
@@ -109,13 +111,19 @@ class AccountCreator():
         submit.click()
 
         sleep(3)
+        try:
 
-        age_button = driver.find_element_by_xpath( "//input[@name='ageRadio' and @value='above_18']")
-        age_button.click()
+            age_button = driver.find_element_by_xpath( "//input[@name='ageRadio' and @value='above_18']")
+            age_button.click()
 
-        sleep(2)
-        next_button = driver.find_elements_by_xpath('//button[text()="Next"]')[1]
-        next_button.click()
+
+            sleep(2)
+            next_button = driver.find_elements_by_xpath('//button[text()="Next"]')[1]
+            next_button.click()
+
+        except Exception as e :
+            pass
+
 
         sleep(4)
         # After the first fill save the account account_info

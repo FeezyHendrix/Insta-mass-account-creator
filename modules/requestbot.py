@@ -86,10 +86,7 @@ class CreateAccount:
                         pass
                 except:
                     pass
-            except:
-                print('Error!, Trying another Proxy {}'.format(current_socket))
-                self.createaccount()
-
+        
 
 
 
