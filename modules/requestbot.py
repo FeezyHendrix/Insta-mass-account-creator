@@ -2,7 +2,7 @@
 
 """
 import requests
-from modules.config import Config
+from modules.config import config
 from modules.generateaccountinformation import new_account
 import json
 import re
@@ -54,10 +54,6 @@ class CreateAccount:
     # Account creation function
     def createaccount(self):
         # Account creation payload
-        session = requests.Session()
-        
-        try:
-            session_start = session.get(self.url)
         payload = {
             'email': self.email,
             'password': self.password,
@@ -68,9 +64,23 @@ class CreateAccount:
             'opt_into_one_tap' : 'false'
         }
         if self.use_local_ip_address is True:
-            request = requests.post(self.url, data=payload, headers=self.headers)
-            response = json.loads(request.text)
-            print(response)
+            for i in range(0, config.Config['amount_of_account']):
+                session = requests.Session()
+                try: 
+                    session_start = session.get(self.url);
+                    session.headers.update({'referer' : self.referer_url,'x-csrftoken' : session_start.cookies['csrftoken']})
+
+                    create_request = session.post(self.url, data=payload, allow_redirects=True)
+                    session.headers.update({'x-csrftoken' : session_start.cookies['csrftoken']})
+                    response_text = create_request.text
+                    response = json.loads(create_request.text)
+                    print(response)
+
+        elif self.use_custom_proxy is True:
+            try: 
+                with open(config.Config['proxy_file_path'], 'r') as file: 
+
+                session.get(self.url, )
         else :
             if len(self.sockets) > 0:
                 current_socket = self.sockets.pop(0)
