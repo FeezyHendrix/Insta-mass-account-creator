@@ -47,7 +47,7 @@ class AccountCreator():
         # chrome_options.add_argument('headless')
         # ua = UserAgent()
         # user_agent = ua.random
-        chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 640 XL LTE) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10166"')
+        chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"')
         # chrome_options.add_argument("--incognito")
         chrome_options.add_argument('window-size=1200x600')
         driver = webdriver.Chrome(chrome_options=chrome_options)
