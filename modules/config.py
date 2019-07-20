@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSET_DIR = os.path.join(BASE_DIR, 'Assets' )
 
 Config = {
-    "bot_type" : 1, #change to 2 to use python requests
+    "bot_type" : 2, #change to 2 to use python requests
     "use_custom_proxy" : False, #default is False change to True to use a file containing multiple proxies of yours.
     "use_local_ip_address" : True, #default is False chnage to True to user your computers ip directly.
     "amount_of_account": 1, #amount of account you want to create make sure it doesnt exceed 50 for better performance
