@@ -1,4 +1,4 @@
-beautifulsoup4==4.7.1
+beautifulsoup4==4.8.0
 certifi==2018.11.29
 chardet==3.0.4
 fake-useragent==0.1.11
