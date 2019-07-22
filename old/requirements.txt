@@ -1,6 +1,6 @@
 certifi==2018.11.29
 chardet==3.0.4
-idna==2.6
+idna==2.8
 python-firebase==1.2
 requests==2.20.0
 selenium==3.12.0
