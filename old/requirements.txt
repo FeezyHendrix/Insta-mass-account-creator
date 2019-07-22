@@ -4,4 +4,4 @@ idna==2.6
 python-firebase==1.2
 requests==2.18.4
 selenium==3.12.0
-urllib3==1.22
+urllib3==1.24.2
