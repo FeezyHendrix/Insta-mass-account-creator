@@ -117,7 +117,7 @@ class CreateAccount:
                     response_text = create_request.text
                     response = json.loads(create_request.text)
                     print(response)
-                except Exceptionas e:
+                except Exception as e:
                     print(e)
                     print("---Request Bot --- An error occured while creating account with fetched proxy")
         
