@@ -2,7 +2,7 @@
 
 """
 import requests
-from modules.config import config
+from modules.config import Config
 from modules.generateaccountinformation import new_account
 import json
 import re
@@ -96,7 +96,7 @@ class CreateAccount:
                         response_text = create_request.text
                         response = json.loads(create_request.text)
                         print(response)
-                    except Exceptionas e:
+                    except Exception as e:
                         print(e)
                         print("---Request Bot --- An error occured while creating account with custom proxy")
                 else: 
@@ -142,7 +142,7 @@ def runBot():
                         Config['amount_of_account'],proxy=proxy)
                     account.createaccount()
         else :
-            account_info = new_account(country=config.Config['country'])
+            account_info = new_account(country=config. Config['country'])
             account = CreateAccount(
                 account_info['email'],
                 account_info['username'],
