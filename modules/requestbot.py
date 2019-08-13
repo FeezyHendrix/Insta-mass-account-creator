@@ -96,13 +96,13 @@ class CreateAccount:
                         response_text = create_request.text
                         response = json.loads(create_request.text)
                         print(response)
-                    except Exceptionas e:
+                    except Exceptionas as e:
                         print(e)
                         print("---Request Bot --- An error occured while creating account with custom proxy")
                 else: 
                     raise Exception('---Request Bot --- Proxy must to added to proxies.txt list')
 
-                session.get(self.url, )
+                session.get(self.url)
         else :
             if len(self.sockets) > 0:
                 current_socket = self.sockets.pop(0)
