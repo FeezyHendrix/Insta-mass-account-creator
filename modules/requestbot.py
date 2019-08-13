@@ -102,7 +102,7 @@ class CreateAccount:
                 else: 
                     raise Exception('---Request Bot --- Proxy must to added to proxies.txt list')
 
-                session.get(self.url, )
+                session.get(self.url)
         else :
             if len(self.sockets) > 0:
                 current_socket = self.sockets.pop(0)
