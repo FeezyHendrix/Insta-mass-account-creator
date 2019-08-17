@@ -23,21 +23,7 @@ class CreateAccount:
         self.url = "https://www.instagram.com/accounts/web_create_ajax/"
         self.referer_url = "https://www.instagram.com/"
         self.proxy = proxy
-        # self.headers = {
-        #     'accept': "*/*",
-        #     'accept-encoding': "gzip, deflate, br",
-        #     'accept-language': "en-US,en;q=0.8",
-        #     'content-length': "241",
-        #     'content-type': 'application/x-www-form-urlencoded',
-        #     'origin': "https://www.instagram.com",
-        #     'referer': "https://www.instagram.com/",
-        #     'user-agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
-        #     'x-csrftoken': "95RtiLDyX9J6AcVz9jtUIySbwf75WhvG",
-        #     'x-instagram-ajax': "c7e210fa2eb7",
-        #     'x-requested-with': "XMLHttpRequest",
-        #     'Cache-Control': "no-cache",
-        # }
-        self.__collectcrsf()
+       
         self.__collect_sockets()
 
     # A function to fetch custom proxies
@@ -88,7 +74,7 @@ class CreateAccount:
                 session = requests.Session()
                 if(self.proxy is not None):
                     try: 
-                        session_start = session.get(self.url,   proxies={'http' : self.proxy, 'https' : self.proxy});
+                        session_start = session.get(self.url,   proxies={'http' : self.proxy, 'https' : self.proxy})
                         session.headers.update({'referer' : self.referer_url,'x-csrftoken' : session_start.cookies['csrftoken']})
 
                         create_request = session.post(self.url, data=payload, allow_redirects=True)
@@ -102,8 +88,11 @@ class CreateAccount:
                 else: 
                     raise Exception('---Request Bot --- Proxy must to added to proxies.txt list')
 
-                session.get(self.url, )
-        else :
+                session.get(self.url)
+            except Exception as e:
+                 print(e)
+                 print("---Request Bot --- An error occured while creating account with custom proxy")
+        else:
             if len(self.sockets) > 0:
                 current_socket = self.sockets.pop(0)
                 proxies = {"http": "http://" + current_socket, "https": "https://" + current_socket}
@@ -127,13 +116,13 @@ class CreateAccount:
 
 
 def runBot():
-    for i in range(config.Config['amount_of_account']):
+    for i in range(Config['amount_of_account']):
        
-        if(config.Config['use_custom_proxy'] == True):
-             with open(config.Config['proxy_file_path'], 'r') as file:
+        if(Config['use_custom_proxy'] == True):
+             with open(Config['proxy_file_path'], 'r') as file:
                 content = file.read().splitlines()
                 for proxy in content:
-                    account_info = new_account(country=config.Config['country'])
+                    account_info = new_account(country=Config['country'])
                     account = CreateAccount(
                         account_info['email'],
                         account_info['username'],
@@ -142,11 +131,13 @@ def runBot():
                         Config['amount_of_account'],proxy=proxy)
                     account.createaccount()
         else :
-            account_info = new_account(country=config. Config['country'])
+            account_info = new_account()
             account = CreateAccount(
                 account_info['email'],
                 account_info['username'],
                 account_info['password'],
                 account_info['name'],
-                Config['amount_of_account'])
+                Config['amount_of_account'], 
+                Config['use_custom_proxy'], 
+                Config['use_local_ip_address'])
             account.createaccount()

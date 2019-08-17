@@ -1,6 +1,6 @@
 """ author: feezyhendrix
 
-    main function borcore
+    main function botcore
  """
 
 from time import sleep
@@ -10,7 +10,7 @@ import modules.config as config
 # importing generated info
 import modules.generateaccountinformation as accnt
 from modules.storeusername import store
-from .activate_account import get_activation_url
+# from .activate_account import get_activation_url
 # library import
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -18,9 +18,9 @@ from selenium.webdriver.common.keys import Keys  # and Krates
 import requests
 import re
 import logging
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 
-from pymailutils import Imap
+# from pymailutils import Imap
 
 class AccountCreator():
     account_created = 0
@@ -128,11 +128,14 @@ class AccountCreator():
         sleep(4)
         # After the first fill save the account account_info
         store(account_info)
-
+        
+        """
+            Currently buggy code.
+        """
         # Activate the account
-        confirm_url = get_activation_url(account_info['email'])
-        logging.info("The confirm url is {}".format(confirm_url))
-        driver.get(confirm_url)
+        # confirm_url = get_activation_url(account_info['email'])
+        # logging.info("The confirm url is {}".format(confirm_url))
+        # driver.get(confirm_url)
 
         driver.close()
 

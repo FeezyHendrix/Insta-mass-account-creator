@@ -5,3 +5,4 @@ env/*
 appunti.txt
 myconfig.py
 debug.log
+/env
