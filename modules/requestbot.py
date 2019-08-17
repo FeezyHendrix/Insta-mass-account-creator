@@ -122,7 +122,7 @@ def runBot():
              with open(Config['proxy_file_path'], 'r') as file:
                 content = file.read().splitlines()
                 for proxy in content:
-                    account_info = new_account(country=Config['country'])
+                    account_info = new_account()
                     account = CreateAccount(
                         account_info['email'],
                         account_info['username'],
