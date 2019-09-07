@@ -128,7 +128,9 @@ def runBot():
                         account_info['username'],
                         account_info['password'],
                         account_info['name'],
-                        Config['amount_of_account'],proxy=proxy)
+                        Config['amount_of_account'], 
+                        Config['use_custom_proxy'], 
+                        Config['use_local_ip_address'],proxy=proxy)
                     account.createaccount()
         else :
             account_info = new_account()
