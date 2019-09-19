@@ -50,7 +50,7 @@ class AccountCreator():
         chrome_options.add_argument('--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"')
         # chrome_options.add_argument("--incognito")
         chrome_options.add_argument('window-size=1200x600')
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=config.Config['chromedriver_path'])
         print('Opening Browser')
         driver.get(self.url)
 

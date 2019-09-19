@@ -19,6 +19,7 @@ open config.py in modules
 
 | Config               | Usage                                                                                                |
 | :------------------- | :--------------------------------------------------------------------------------------------------- |
+| chromedriver_path    | Path to chromedriver                                                                                 |
 | bot_type             | Default is 1 to use selenium to create accounts or use 2 to use python requests                      |
 | password             | General password for Each account generated to be able to login                                      |
 | use_local_ip_address | using local Ip to create account, default is False                                                   |
