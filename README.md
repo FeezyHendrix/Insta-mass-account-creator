@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/badge/version-1.1.0-brightgreen.svg?style=flat-square)
 ![Version](https://img.shields.io/badge/release-beta-green.svg?style=flat-square)
 
-<a href="https://www.buymeacoffee.com/Uo8YEsT" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+#### Actively not being maintained, due to different challenges. if you would like to maintain this project contact me!
 
 Create a new virtualenv
 
