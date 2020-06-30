@@ -7,5 +7,5 @@ MechanicalSoup==0.11.0
 requests==2.22.0
 selenium==3.141.0
 six==1.12.0
-soupsieve==1.9.2
+soupsieve==1.9.6
 urllib3==1.25.3
