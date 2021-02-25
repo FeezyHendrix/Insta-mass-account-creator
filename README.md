@@ -1,4 +1,4 @@
-# Insta Mass Account creator
+# Insta Mass Account creator (Not being maintained, feel free to fork)
 ![Version](https://img.shields.io/badge/version-1.1.0-brightgreen.svg?style=flat-square)
 ![Version](https://img.shields.io/badge/release-beta-green.svg?style=flat-square)
 
