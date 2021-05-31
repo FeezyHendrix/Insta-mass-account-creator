@@ -28,7 +28,7 @@ class AccountCreator():
         self.sockets = []
         self.use_custom_proxy = use_custom_proxy
         self.use_local_ip_address = use_local_ip_address
-        self.url = 'https://www.instagram.com/'
+        self.url = 'https://www.instagram.com/accounts/emailsignup/'
         self.__collect_sockets()
 
 
@@ -103,7 +103,7 @@ class AccountCreator():
         sleep(2)
 
         submit = driver.find_element_by_xpath(
-            '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button')
+            '//*[@id="react-root"]/section/main/div/div/div[1]/div/form/div[7]/div/button')
 
         action_chains.move_to_element(submit)
 
@@ -113,12 +113,20 @@ class AccountCreator():
         sleep(3)
         try:
 
-            age_button = driver.find_element_by_xpath( "//input[@name='ageRadio' and @value='above_18']")
-            age_button.click()
-
+            month_button = driver.find_element_by_xpath( '//*[@id="react-root"]/section/main/div/div/div[1]/div/div[4]/div/div/span/span[1]/select')
+            month_button.click()
+            month_button.send_keys(account_info["birthday"].split(" ")[0])
+            sleep(1)
+            day_button = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/div/div[1]/div/div[4]/div/div/span/span[2]/select')
+            day_button.click()
+            day_button.send_keys(account_info["birthday"].split[" "][1][:-1])
+            sleep(1)
+            year_button = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/div/div[1]/div/div[4]/div/div/span/span[3]/select')
+            year_button.click()
+            year_button.send_keys(account_info["birthday"].split[" "][2])
 
             sleep(2)
-            next_button = driver.find_elements_by_xpath('//button[text()="Next"]')[1]
+            next_button = driver.find_elements_by_xpath('//*[@id="react-root"]/section/main/div/div/div[1]/div/div[6]/button')
             next_button.click()
 
         except Exception as e :
