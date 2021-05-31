@@ -28,7 +28,7 @@ class AccountCreator():
         self.sockets = []
         self.use_custom_proxy = use_custom_proxy
         self.use_local_ip_address = use_local_ip_address
-        self.url = 'https://www.instagram.com/'
+        self.url = 'https://www.instagram.com/accounts/emailsignup/'
         self.__collect_sockets()
 
 
