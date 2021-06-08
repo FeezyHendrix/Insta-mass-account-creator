@@ -3,7 +3,7 @@ certifi==2020.4.5.1
 chardet==3.0.4
 idna==2.8
 lxml==4.4.1
-MechanicalSoup==0.11.0
+MechanicalSoup==0.12.0
 requests==2.22.0
 selenium==3.141.0
 six==1.12.0
