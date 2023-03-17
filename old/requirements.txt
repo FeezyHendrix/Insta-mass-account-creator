@@ -1,6 +1,6 @@
 certifi==2020.4.5.1
 chardet==3.0.4
-idna==2.6
+idna==2.10
 python-firebase==1.2
 requests==2.20.0
 selenium==3.12.0
