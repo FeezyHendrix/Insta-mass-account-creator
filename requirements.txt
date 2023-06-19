@@ -1,7 +1,7 @@
 beautifulsoup4==4.8.0
 certifi==2020.4.5.1
 chardet==3.0.4
-idna==2.8
+idna==2.10
 lxml==4.4.1
 MechanicalSoup==0.11.0
 requests==2.22.0
