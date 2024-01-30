@@ -54,34 +54,30 @@ class CreateAccount:
         """
             Check if to use local ip address to create account, then create account based on the amount set in the config.py
         """
-        if self.use_local_ip_address is True:
+        if self.use_local_ip_address:
             session = requests.Session()
             try: 
-                session_start = session.get(self.url);
+                session_start = session.get(self.url)
                 session.headers.update({'referer' : self.referer_url,'x-csrftoken' : session_start.cookies['csrftoken']})
 
                 create_request = session.post(self.url, data=payload, allow_redirects=True)
                 session.headers.update({'x-csrftoken' : session_start.cookies['csrftoken']})
-                response_text = create_request.text
-                response = json.loads(create_request.text)
-                print(response)
+                print(json.loads(create_request.text))
             except Exception as e:
                 print(e)
                 print("---Request Bot --- An error occured while creating account with local ip address")
 
-        elif self.use_custom_proxy is True:
+        elif self.use_custom_proxy:
             try: 
                 session = requests.Session()
-                if(self.proxy is not None):
+                if self.proxy is not None:
                     try: 
                         session_start = session.get(self.url,   proxies={'http' : self.proxy, 'https' : self.proxy})
                         session.headers.update({'referer' : self.referer_url,'x-csrftoken' : session_start.cookies['csrftoken']})
 
                         create_request = session.post(self.url, data=payload, allow_redirects=True)
                         session.headers.update({'x-csrftoken' : session_start.cookies['csrftoken']})
-                        response_text = create_request.text
-                        response = json.loads(create_request.text)
-                        print(response)
+                        print(json.loads(create_request.text))
                     except Exception as e:
                         print(e)
                         print("---Request Bot --- An error occured while creating account with custom proxy")
@@ -103,9 +99,7 @@ class CreateAccount:
 
                     create_request = session.post(self.url, data=payload, allow_redirects=True)
                     session.headers.update({'x-csrftoken' : session_start.cookies['csrftoken']})
-                    response_text = create_request.text
-                    response = json.loads(create_request.text)
-                    print(response)
+                    print(json.loads(create_request.text))
                 except Exception as e:
                     print(e)
                     print("---Request Bot --- An error occured while creating account with fetched proxy")
@@ -118,7 +112,7 @@ class CreateAccount:
 def runBot():
     for i in range(Config['amount_of_account']):
        
-        if(Config['use_custom_proxy'] == True):
+        if Config['use_custom_proxy']:
              with open(Config['proxy_file_path'], 'r') as file:
                 content = file.read().splitlines()
                 for proxy in content:
