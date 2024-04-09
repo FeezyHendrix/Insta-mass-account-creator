@@ -1,5 +1,5 @@
-# Instagram Mass Account Creator
-This repository isn't being actively maintained. So, please refer to the below link to buy a maintained creator written in **Python**:
+# Instagram Account Creator (Maintained)
+Please refer to the below link to buy a maintained creator written in **Python**.
 
 [**YouTube Video**](https://www.youtube.com/watch?v=TOAWGr7G88s)
 
@@ -28,4 +28,4 @@ $ SessionID: jsowoaldnsis
 ## Legal
 This tool is for educational purposes only, and to understand the working of such APIs. Use of such tools may violate Instagram's Community Guidelines. Please use it responsibly.
 
-Repository credits: [Matteo Gaito](https://github.com/matteogaito)
+**Repository credits:** [Matteo Gaito](https://github.com/matteogaito)
