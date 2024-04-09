@@ -6,6 +6,6 @@ lxml==4.4.1
 MechanicalSoup==0.11.0
 requests==2.22.0
 selenium==3.141.0
-six==1.12.0
+six==1.16.0
 soupsieve==2.0
 urllib3==1.25.3
