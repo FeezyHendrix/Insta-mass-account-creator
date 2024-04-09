@@ -4,7 +4,7 @@ This repository isn't being actively maintained. So, please refer to the below l
 [**YouTube Video**](https://www.youtube.com/watch?v=TOAWGr7G88s)
 
 ## Download (Maintained)
-Download the code from [here](https://sonii.gumroad.com/l/account-creator/EARLY20).
+Download the code from [here](https://sonii.gumroad.com/l/account-creator/FEEZY20).
 
 ## Run
     $ python main.py
