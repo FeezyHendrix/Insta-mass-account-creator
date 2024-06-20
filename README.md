@@ -1,10 +1,4 @@
-# Instagram Account Creator (Maintained)
-Please refer to the below link to buy a maintained creator written in **Python**.
-
-[**YouTube Video**](https://www.youtube.com/watch?v=TOAWGr7G88s)
-
-## Download (Maintained)
-Download the code from [here](https://diezo.github.io/creator/).
+# Instagram Account Creator Archived
 
 ## Usage
 Run this command in terminal:
